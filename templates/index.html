@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grammar & Spell Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Grammar & Spell Checker</h1>
+
+    <form method="POST">
+        <textarea name="text" placeholder="Paste or type your text here...">{{ original }}</textarea><br>
+        <button type="submit">Check Grammar</button>
+        <div id="loading">Checking your text...</div>
+    </form>
+
+    {% if corrected %}
+    <div class="result-box">
+        <h2>Corrected Text:</h2>
+        <p id="correctedText">{{ corrected }}</p>
+        <button id="copyBtn">Copy Text</button>
+        <p id="copyMsg" style="display:none;">Copied!</p>
+    </div>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
